@@ -28,7 +28,7 @@ $(document ).ready(function() {
             var context = {
               titolo: film.title,
               titolooriginale: film.original_title,
-              lingua: film.original_language,
+              lingua: languageWithFlag(film.original_language),
               voto: ratewithStars(film.vote_average)
             };
             var html = template(context);
@@ -51,9 +51,21 @@ $(document ).ready(function() {
           stars += '<i class="far fa-star"></i>'
         }
       }
-
       return(stars)
+    }
 
+    // funzione per indicare la lingua con la bandiera della nazione corrispondente
+    function languageWithFlag(lang) {
+      langarray = ["it", "en"];
+      var flag = "";
+
+      if (langarray.includes(lang)) {
+        flag = "<img src='img/" + lang + ".svg' class='lang'>";
+      } else {
+        flag = lang;
+      }
+
+      return(flag)
 
     }
   })
