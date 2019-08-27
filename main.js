@@ -7,6 +7,7 @@ $(document ).ready(function() {
     // salvo in una variabile il valore dell'input
     var query = $("#search").val();
 
+    // chiamata per la ricerca di film
     $.ajax(
       {
         url: "https://api.themoviedb.org/3/search/movie",
@@ -30,7 +31,8 @@ $(document ).ready(function() {
               titolo: film.title,
               titolooriginale: film.original_title,
               lingua: languageWithFlag(film.original_language),
-              voto: ratewithStars(film.vote_average)
+              voto: ratewithStars(film.vote_average),
+              copertina: poster(film.poster_path)
             };
             var html = template(context);
             $(".results").append(html);
@@ -41,7 +43,7 @@ $(document ).ready(function() {
         }
       }
     )
-
+    // chiamata per la ricerca di serie tv
     $.ajax(
       {
         url: "https://api.themoviedb.org/3/search/tv",
@@ -65,7 +67,8 @@ $(document ).ready(function() {
               titolo: tv.name,
               titolooriginale: tv.original_name,
               lingua: languageWithFlag(tv.original_language),
-              voto: ratewithStars(tv.vote_average)
+              voto: ratewithStars(tv.vote_average),
+              copertina: poster(tv.poster_path)
             };
             var html = template(context);
             $(".results").append(html);
@@ -101,6 +104,18 @@ $(document ).ready(function() {
         flag = lang;
       }
       return(flag)
+    }
+
+    // funzione per inserire la copertina (qualora ci fosse)
+    function poster(path) {
+      var copertina = "";
+      if (path) {
+        copertina = "<img src= https://image.tmdb.org/t/p/" + "w185" + path + ">";
+      } else {
+        copertina = ""
+      }
+
+      return(copertina);
 
     }
   })
