@@ -2,8 +2,8 @@ $(document ).ready(function() {
   console.log("ciao");
 
   $("#go").click(function(){
-    // pulisco l'input
-    // $("#search").val("");
+    // pulisco il div contenenti i risultati
+    $(".results").html("");
     // salvo in una variabile il valore dell'input
     var query = $("#search").val();
 
@@ -26,10 +26,46 @@ $(document ).ready(function() {
             var source   = document.getElementById("entry-template").innerHTML;
             var template = Handlebars.compile(source);
             var context = {
+              tipo: "Film",
               titolo: film.title,
               titolooriginale: film.original_title,
               lingua: languageWithFlag(film.original_language),
               voto: ratewithStars(film.vote_average)
+            };
+            var html = template(context);
+            $(".results").append(html);
+          }
+        },
+        error: function() {
+          alert("Errore");
+        }
+      }
+    )
+
+    $.ajax(
+      {
+        url: "https://api.themoviedb.org/3/search/tv",
+        method: "GET",
+        data: {
+          api_key : "d063f38fe3e1f45729834c95133aff40",
+          language : "it-IT",
+          query : query
+        },
+        success: function(data) {
+
+          var series = data.results;
+          console.log("serie: ", series);
+          for (var i = 0; i<series.length; i++) {
+            // salvo l'elemento i-esimo in una variabile
+            var tv = series[i];
+            var source   = document.getElementById("entry-template").innerHTML;
+            var template = Handlebars.compile(source);
+            var context = {
+              tipo: "Serie TV",
+              titolo: tv.name,
+              titolooriginale: tv.original_name,
+              lingua: languageWithFlag(tv.original_language),
+              voto: ratewithStars(tv.vote_average)
             };
             var html = template(context);
             $(".results").append(html);
@@ -64,7 +100,6 @@ $(document ).ready(function() {
       } else {
         flag = lang;
       }
-
       return(flag)
 
     }
