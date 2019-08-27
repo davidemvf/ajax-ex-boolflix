@@ -27,14 +27,16 @@
       <!-- template per i risultati della ricerca -->
       <script id="entry-template" type="text/x-handlebars-template">
         <div class="film">
-          <ul>
-            <li>{{tipo}}</li>
-            <li>{{titolo}}</li>
-            <li>{{titolooriginale}}</li>
-            <li>{{{lingua}}}</li>
-            <li>{{{voto}}}</li>
-          </ul>
           {{{copertina}}}
+          <div class="info">
+            <ul>
+              <li>{{tipo}}</li>
+              <li>{{titolo}}</li>
+              <li>{{titolooriginale}}</li>
+              <li>{{{lingua}}}</li>
+              <li>{{{voto}}}</li>
+            </ul>
+          </div>
         </div>
       </script>
       <script type="text/javascript" src="main.js"></script>

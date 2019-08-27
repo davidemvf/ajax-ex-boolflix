@@ -27,10 +27,53 @@ header {
 main {
   background: #434343;
   height: calc(100vh - 80px);
+  overflow: auto;
 }
 
 .results {
   width: 85%;
   margin: 0 auto;
-  overflow: hidden;
+  /* display: flex; */
+}
+
+.lang {
+  height: 15px;
+}
+
+.film {
+  height: 277px;
+  width: 185px;
+  position: relative;
+  margin: 10px;
+}
+
+.info {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background: lightgray;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+}
+
+.film:hover .info{
+  display: block;
+}
+
+div.info ul {
+  list-style: none;
+  /* padding: 10px; */
+  color: lightgray;
+}
+
+div.info ul li {
+  padding: 10px;
+}
+
+.fa-star{
+  color: yellow;
 }
