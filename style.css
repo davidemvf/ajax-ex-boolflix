@@ -4,7 +4,33 @@
   box-sizing: border-box;
 }
 
-.container{
+header {
+  width: 100%;
+  background: black;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 150px;
+  height: 90px;
+}
+
+.search-bar {
+  height: 40%;
+  margin-right: 20px;
+  padding-top: 15px;
+}
+
+main {
+  background: #434343;
+  height: calc(100vh - 80px);
+}
+
+.results {
   width: 85%;
-  margin: 20 auto;
+  margin: 0 auto;
+  overflow: hidden;
 }

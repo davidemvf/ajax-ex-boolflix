@@ -6,16 +6,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
     <title></title>
   </head>
   <body>
-    <div class="container">
-      <input id="search" type="text" placeholder="Search...">
-      <button id="go" type="button" name="button">Invia</button>
+    <header>
+      <img id="logo" src="img/netlogo.png" alt="">
+      <div class="search-bar">
+        <input id="search" type="text" placeholder="Search...">
+        <button id="go" type="button" name="button">Invia</button>
+      </div>
+    </header>
+    <main>
       <div class="results">
 
       </div>
+
+    </main>
+
+      <!-- template per i risultati della ricerca -->
       <script id="entry-template" type="text/x-handlebars-template">
         <div class="film">
           <ul>
@@ -29,6 +38,6 @@
         </div>
       </script>
       <script type="text/javascript" src="main.js"></script>
-    </div>
+
   </body>
 </html>
